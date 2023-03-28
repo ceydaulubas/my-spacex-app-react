@@ -1,17 +1,21 @@
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import LaunchSearch from "../components/LaunchSearch";
+import { LaunchSearch, Pagination } from "../components";
 
 const Launches = () => {
     const { data, isLoading, error } = useFetch(
-        "https://api.spacexdata.com/v4/launches"
+        "https://api.spacexdata.com/v5/launches/"
     );
     const [launches, setLaunches] = useState([]);
     const [filteredLaunches, setFilteredLaunches] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(12);
+
 
     useEffect(() => {
         if (data) {
@@ -37,6 +41,16 @@ const Launches = () => {
         setFilteredLaunches(filtered);
     }, [launches, searchTerm, startDate, endDate]);
 
+    // Get current launch
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentLaunches = filteredLaunches.slice(
+        indexOfFirstPost,
+        indexOfLastPost
+    );
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -47,7 +61,7 @@ const Launches = () => {
 
     return (
         <>
-            <section className="py-32 max-width">
+            <section className="py-10 max-width">
                 <h1 className="heading text-center mb-10">Launches</h1>
                 <LaunchSearch
                     searchTerm={searchTerm}
@@ -60,7 +74,7 @@ const Launches = () => {
                 />
 
                 <div className="max-width grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 px-5">
-                    {filteredLaunches.map(({ id, name, links, details }) => (
+                    {currentLaunches.map(({ id, name, links, details }) => (
                         <Link to={`/launches/${id}`} key={id} className="p-5 bg-black">
                             {links.patch.large ? (
                                 <img src={links.patch.large} alt={name} />
@@ -82,6 +96,7 @@ const Launches = () => {
                         </Link>
                     ))}
                 </div>
+                <Pagination postsPerPage={postsPerPage} filteredLaunches={filteredLaunches} paginate={paginate} currentPage={currentPage} />
             </section>
         </>
     );
