@@ -75,11 +75,11 @@ const Launches = () => {
                     endDate={endDate}
                 />
 
-                <div className="max-width grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 px-5">
+                <div className="max-width-sm grid grid-cols-1 gap-10 sm:grid-cols-2 md:grid-cols-3 px-5 mt-8">
                     {currentLaunches.map(({ id, name, links, details }) => (
-                        <Link to={`/launches/${id}`} key={id} className="p-5 bg-black">
-                            {links.patch.large ? (
-                                <img src={links.patch.large} alt={name} />
+                        <Link to={`/launches/${id}`} key={id} className="p-5 bg-slate-900">
+                            {links.patch.small ? (
+                                <img src={links.patch.small} alt={name} />
                             ) : (
                                 <img
                                     src="https://images2.imgbox.com/40/e3/GypSkayF_o.png"
@@ -92,14 +92,17 @@ const Launches = () => {
                             {details && (
                                 <p className="text-white opacity-75">{`${details.substring(
                                     0,
-                                    50
+                                    100
                                 )}...`}</p>
                             )}
                         </Link>
                     ))}
                 </div>
-                <Pagination postsPerPage={postsPerPage} filteredLaunches={filteredLaunches} paginate={paginate} currentPage={currentPage} />
+                <div className="flex justify-center flex-wrap max-w-full mt-10">
+                    <Pagination postsPerPage={postsPerPage} filteredLaunches={filteredLaunches} paginate={paginate} currentPage={currentPage} />
+                </div>
             </section>
+
         </>
 
     );

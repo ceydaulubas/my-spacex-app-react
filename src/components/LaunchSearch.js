@@ -22,14 +22,14 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
     };
 
     return (
-        <form onSubmit={handleSubmit} className="flex justify-center mt-10">
-            <div className="flex items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row items-center justify-center mt-10">
+            <div className="flex flex-col md:flex-row items-center">
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search by mission name"
-                    className="border border-gray-400 rounded py-1 px-2 mr-2"
+                    className="border border-gray-400 rounded py-1 px-2 mr-2 mb-2 md:mb-0 md:mr-0"
                 />
                 <label htmlFor="startDate" className="mr-2  text-white">
                     Start date:
@@ -39,7 +39,7 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
                     id="startDate"
                     value={startDate}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="border border-gray-400 rounded py-1 px-2 mr-2"
+                    className="border border-gray-400 rounded py-1 px-2 mr-2 mb-2 md:mb-0 md:mr-2"
                 />
                 <label htmlFor="endDate" className="mr-2  text-white">
                     End date:
@@ -49,13 +49,14 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
                     id="endDate"
                     value={endDate}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="border border-gray-400 rounded py-1 px-2"
+                    className="border border-gray-400 rounded py-1 px-2 mb-2 md:mb-0"
                 />
-                <button type="submit" className="ml-2 bg-gray-800 text-white py-1 px-3 rounded">
+                <button type="submit" className="ml-2 bg-red-700 text-white py-1 px-3 rounded">
                     Clear 2 date range
                 </button>
             </div>
         </form>
+
     );
 };
 
