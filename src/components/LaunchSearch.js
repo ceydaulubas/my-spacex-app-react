@@ -30,7 +30,7 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
                     placeholder="Search by mission name"
                     className="border border-gray-400 rounded py-1 px-2 mr-2"
                 />
-                <label htmlFor="startDate" className="mr-2">
+                <label htmlFor="startDate" className="mr-2  text-white">
                     Start date:
                 </label>
                 <input
@@ -40,7 +40,7 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
                     onChange={(e) => setStartDate(e.target.value)}
                     className="border border-gray-400 rounded py-1 px-2 mr-2"
                 />
-                <label htmlFor="endDate" className="mr-2">
+                <label htmlFor="endDate" className="mr-2  text-white">
                     End date:
                 </label>
                 <input

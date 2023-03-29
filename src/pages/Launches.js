@@ -1,7 +1,7 @@
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { LaunchSearch, Pagination } from "../components";
+import { LaunchSearch, Pagination, Spinner, Error } from "../components";
 
 const Launches = () => {
     const { data, isLoading, error } = useFetch(
@@ -52,11 +52,13 @@ const Launches = () => {
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        <Spinner />
+
     }
 
     if (error) {
-        return <div>Error: {error.message}</div>;
+        <Error />
+        console.log("Error:", error.message)
     }
 
     return (
@@ -99,6 +101,7 @@ const Launches = () => {
                 <Pagination postsPerPage={postsPerPage} filteredLaunches={filteredLaunches} paginate={paginate} currentPage={currentPage} />
             </section>
         </>
+
     );
 };
 
