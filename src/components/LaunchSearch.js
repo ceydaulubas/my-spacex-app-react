@@ -9,12 +9,13 @@ const LaunchSearch = ({ searchTerm, setSearchTerm, setStartDate, setEndDate, lau
         setStartDate("");
         setEndDate("");
         setFilteredLaunches(
-            launches.filter(({ date_utc }) => {
+            launches.filter(({ date_utc, name }) => {
                 const launchDate = parseISO(date_utc);
                 const start = startDate ? parseISO(startDate) : null;
                 const end = endDate ? parseISO(endDate) : null;
                 return (
-                    (!start || isAfter(launchDate, start)) && (!end || isBefore(launchDate, end))
+                    (!start || isAfter(launchDate, start)) && (!end || isBefore(launchDate, end)) &&
+                    name.toLowerCase().includes(searchTerm.toLowerCase())
                 );
             })
         );
