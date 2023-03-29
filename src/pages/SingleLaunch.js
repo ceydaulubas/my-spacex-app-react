@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom"
-// import { Loading } from "../components"
-// import { format } from "date-fns"
+import { Spinner } from "../components"
+import { format } from "date-fns"
 
 export default function SingleLaunch() {
     const [singleLaunch, setSingleLaunch] = useState(null)
@@ -20,7 +20,7 @@ export default function SingleLaunch() {
     return (
         <>
             {!singleLaunch ? (
-                <div>Loading...</div>
+                <Spinner />
             ) : (
                 <section className="py-32 max-width grid grid-cols-1 gap-10 md:grid-cols-2">
                     <article>
@@ -41,7 +41,7 @@ export default function SingleLaunch() {
                         <h1 className="heading">{singleLaunch.name}</h1>
                         <h2 className="text-white font-bold text-xl opacity-75 mt-2">
                             Launch Date:{" "}
-                            {/* {format(new Date(singleLaunch.date_local), "dd MMMM yyyy")},{" "} */}
+                            {format(new Date(singleLaunch.date_local), "dd MMMM yyyy")},{" "}
                             {singleLaunch.success ? (
                                 <span className="text-emerald-500">Successful</span>
                             ) : (
