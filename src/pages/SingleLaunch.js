@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import { Spinner } from "../components"
 import { format } from "date-fns"
 
-export default function SingleLaunch() {
+const SingleLaunch = () => {
     const [singleLaunch, setSingleLaunch] = useState(null)
     const { id } = useParams()
 
@@ -117,3 +117,6 @@ export default function SingleLaunch() {
         </>
     )
 }
+
+
+export default SingleLaunch;

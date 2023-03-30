@@ -45,6 +45,14 @@ const Navbar = () => {
                 >
                     Launches
                 </Link>
+                <Link
+                    to="/crew"
+                    className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-700 sm:ml-2"
+                    onClick={() => setIsOpen(false)}
+                >
+                    Crew
+                </Link>
+
             </nav>
         </header>
     );

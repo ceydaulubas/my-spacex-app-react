@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function Error() {
+const Error = () => {
     return (
         <>
             <section className="flex flex-col items-center justify-center text-center h-screen bg-red-500">
@@ -12,3 +12,5 @@ export default function Error() {
         </>
     )
 }
+
+export default Error;

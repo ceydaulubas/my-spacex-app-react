@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 import backgroundImage from "../spacex_starship_hls_artemis_iii_2_crew_0.jpg";
 import { FaGlobe, FaTwitter, FaFlickr, FaLongArrowAltDown } from "react-icons/fa";
 
-export default function Home() {
+const Home = () => {
     const [company, setCompany] = useState([])
     const [scale, setScale] = useState(1);
 
@@ -89,3 +89,5 @@ export default function Home() {
 
     )
 }
+
+export default Home;
