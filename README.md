@@ -28,4 +28,4 @@ This application was built using the following technologies:
 
 ## Deployment
 
-You can access this project at `https://my-spacex-app-react.netlify.app/`
+You can access this project at https://my-spacex-app-react.netlify.app/
