@@ -24,8 +24,4 @@ This application was built using the following technologies:
 
 -React.js
 
--Node.js
-
--Express.js
-
--MongoDB
+-Tailwind
