@@ -27,6 +27,7 @@ const Crew = () => {
 
     return (
         <div>
+            <h1 className="heading text-center mb-10">Crews</h1>
             <CrewSlider crews={crews} />
         </div>
     );
